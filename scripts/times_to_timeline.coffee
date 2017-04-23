@@ -8,7 +8,4 @@ module.exports = (robot) ->
       id = msg.message.id.replace('.','')
       post_link = "https://#{ process.env.HUBOT_SLACK_TEAM }.slack.com/archives/#{ room_id }/p#{ id }"
 
-      robot.logger.info "msg objest is ------------------------"
-      robot.logger.info msg
-      robot.logger.info "--------------------------------------"
       robot.send { room: '#timeline' }, { text: post_link, unfurl_links: true }
