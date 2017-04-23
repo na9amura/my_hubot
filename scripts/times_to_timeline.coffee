@@ -1,9 +1,13 @@
 module.exports = (robot) ->
   robot.hear /.+/, (msg) ->
-    room = msg.envelope.room
-    robot.logger.info "room name is: #{ room }"
+    room_name = ''
 
-    if room.match('^times_.+')
+    if msg.channel
+      room_name = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById msg.channel
+      robot.logger.info "room name is: #{ room_name }"
+
+    if room_name.match('^times_.+')
+      room = msg.envelope.room
       id = msg.message.id
       post_link = "https://#{ process.env.HUBOT_SLACK_TEAM }.slack.com/archives/#{ room }/p#{ id }"
 
