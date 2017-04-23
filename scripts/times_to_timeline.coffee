@@ -2,7 +2,7 @@ module.exports = (robot) ->
   robot.hear /.+/, (msg) ->
     room = msg.envelope.room
 
-    unless room == 'test'
-      id = msg.message.id.replace('.', '')
+    if room.match('times_')
+      id = msg.message.id
       post_link = "https://#{ process.env.HUBOT_SLACK_TEAM }.slack.com/archives/#{ room }/p#{ id }"
-      robot.send { room: '#test' }, post_link
+      robot.send { room: '#test' }, { text: post_link, unfurl_links: true }
