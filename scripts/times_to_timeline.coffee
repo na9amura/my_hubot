@@ -5,7 +5,7 @@ module.exports = (robot) ->
     robot.logger.info "room name is: #{ room.name }"
 
     if room.name.match('^times_.+')
-      id = msg.message.id
+      id = msg.message.id.replace('.','')
       post_link = "https://#{ process.env.HUBOT_SLACK_TEAM }.slack.com/archives/#{ room_id }/p#{ id }"
 
       robot.logger.info "room message id is: #{ id }"
