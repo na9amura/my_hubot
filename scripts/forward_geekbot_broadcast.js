@@ -1,6 +1,6 @@
 module.exports = (robot => {
   robot.hear(
-    /posted a status/,
+    /posted a status.+/,
     async (msg) => {
       const dataStore = robot.adapter.client.rtm.dataStore
       const room = await dataStore.getChannelById(msg.envelope.room)
