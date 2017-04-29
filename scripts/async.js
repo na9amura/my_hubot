@@ -7,7 +7,7 @@ module.exports = (robot => {
       const dm_to = robot.adapter.client.rtm.dataStore.getUserByName(dm_to_name)
       if (!dm_to) { return }
 
-      const im = await robot.adapter.client.web.im.open(user.id)
+      const im = await robot.adapter.client.web.im.open(dm_to.id)
       await robot.adapter.client.web.chat.postMessage(
         im.channel.id,
         text,
