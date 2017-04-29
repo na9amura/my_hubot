@@ -2,7 +2,6 @@ module.exports = (robot) ->
   robot.hear /.+/, (msg) ->
     room_id = msg.envelope.room
     room = robot.adapter.client.rtm.dataStore.getChannelGroupOrDMById(room_id)
-    robot.logger.info "room name is: #{ room.name }"
 
     if room.name.match('^times_.+')
       id = msg.message.id.replace('.','')
