@@ -9,7 +9,7 @@ module.exports = (robot => {
       if (! msg.message.text.match('takahiro nakamura')) { return }
 
       robot.send(
-        { room: '#test' },
+        { room: 'test' },
         msg.message.text
       )
     }
