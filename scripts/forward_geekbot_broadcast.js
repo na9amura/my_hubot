@@ -6,7 +6,7 @@ module.exports = (robot => {
       const dataStore = robot.adapter.client.rtm.dataStore
       const room = await dataStore.getChannelById(msg.envelope.room)
 
-      if (!room || room.name != 'test' ) { return }
+      if (!room || room.name == 'test' ) { return }
       robot.logger.info('---------------------------')
 
       robot.send(
