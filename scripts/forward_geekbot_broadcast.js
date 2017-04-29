@@ -1,18 +1,14 @@
 module.exports = (robot => {
-  robot.respond(
-    /.+/,
+  robot.hear(
+    /posted a status.+/,
     async (msg) => {
       const dataStore = robot.adapter.client.rtm.dataStore
       const room = await dataStore.getChannelById(msg.envelope.room)
-      robot.logger.info `room name is: ${ room.name }`
 
-      // if (!room || room.name != 'test' ) { return }
-      if (! msg.message.text.match('takahiro nakamura')) { return }
-
-      robot.logger.info `room name is: ${ room.name }`
+      if (!room || room.name != 'geekbot_broadcast' ) { return }
 
       robot.send(
-        { room: 'test' },
+        { room: '#util_nakamura' },
         msg.message.text
       )
     }
