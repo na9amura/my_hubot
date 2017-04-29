@@ -3,8 +3,8 @@ module.exports = (robot => {
     /.+/,
     async (msg) => {
       dataStore = robot.adapter.client.rtm.dataStore
-      async room = dataStore.getChannelById(msg.envelope.room)
-      async user = dataStore.getUserById(msg.envelope.user)
+      const room = async  dataStore.getChannelById(msg.envelope.room)
+      const user = async  dataStore.getUserById(msg.envelope.user)
       // if (!room || room.name != 'test' ) { return }
       if (! msg.message.text.match('takahiro nakamura')) { return }
 
